@@ -154,32 +154,65 @@
         </div>
       </section>
 
-      <section id="about" class="about" data-pin>
-        <h2 data-reveal>ABOUT</h2>
-        <p data-reveal>
-          I'm a Mobile &amp; Frontend Engineer with 5+ years of experience specializing in
-          React Native, ReactJS, and Flutter. Having built products across multiple
-          startups, I'm no stranger to fast-paced environments — wearing multiple hats,
-          shipping quickly, and solving real user problems.
-        </p>
-        <p data-reveal>
-          I build high-performance, cross-platform applications with a strong focus on
-          clean architecture, scalability, and user experience — end to end.
-        </p>
-        <div class="about__services" data-reveal-stagger>
-          <div class="service">
-            <span class="service__label">FRONTEND</span>
-            <span class="service__stack">React, Next.js, Three.js</span>
+      <section id="about" class="about" data-about-sequence>
+        <span class="about__step-index"><span data-about-current>01</span> / 03</span>
+
+        <div class="about__stage">
+          <div class="about__step about__step--active" data-about-step="intro">
+            <h2>INTRODUCTION</h2>
+            <p>
+              I'm a Mobile &amp; Frontend Engineer with 5+ years of experience specializing in
+              React Native, ReactJS, and Flutter. Having built products across multiple
+              startups, I'm no stranger to fast-paced environments — wearing multiple hats,
+              shipping quickly, and solving real user problems.
+            </p>
+            <p>
+              I build high-performance, cross-platform applications with a strong focus on
+              clean architecture, scalability, and user experience — end to end.
+            </p>
           </div>
-          <div class="service">
-            <span class="service__label">MOBILE</span>
-            <span class="service__stack">React Native, Flutter</span>
+
+          <div class="about__step" data-about-step="skills">
+            <h2>SKILLS</h2>
+            <div class="about__services">
+              <div class="service">
+                <span class="service__label">FRONTEND</span>
+                <span class="service__stack">React, Next.js, Three.js</span>
+              </div>
+              <div class="service">
+                <span class="service__label">MOBILE</span>
+                <span class="service__stack">React Native, Flutter</span>
+              </div>
+              <div class="service">
+                <span class="service__label">BACKEND</span>
+                <span class="service__stack">Node, Supabase, PostgreSQL</span>
+              </div>
+            </div>
           </div>
-          <div class="service">
-            <span class="service__label">BACKEND</span>
-            <span class="service__stack">Node, Supabase, PostgreSQL</span>
+
+          <div class="about__step" data-about-step="capabilities">
+            <h2>WHAT I CAN DO</h2>
+            <ul class="about__capabilities">
+              <li>
+                <span class="service__label">SHIP MOBILE APPS</span>
+                <span class="service__stack">Cross-platform builds with React Native and Flutter, from architecture to App Store.</span>
+              </li>
+              <li>
+                <span class="service__label">BUILD WEB PRODUCTS</span>
+                <span class="service__stack">Fast, accessible interfaces with React and Next.js.</span>
+              </li>
+              <li>
+                <span class="service__label">WIRE THE BACKEND</span>
+                <span class="service__stack">APIs and data with Node, Supabase, and PostgreSQL.</span>
+              </li>
+              <li>
+                <span class="service__label">ADD MOTION &amp; POLISH</span>
+                <span class="service__stack">GSAP and Three.js for interfaces that feel alive.</span>
+              </li>
+            </ul>
           </div>
         </div>
+
         <div class="about__stats" data-reveal-stagger>
           <div class="stat">
             <span class="stat__value" data-count="5" data-count-suffix="+">0</span>
