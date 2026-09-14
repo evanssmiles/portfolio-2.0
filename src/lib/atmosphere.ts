@@ -6,13 +6,11 @@ gsap.registerPlugin(ScrollTrigger);
 export function initAtmosphere(): void {
   const space = document.querySelector<HTMLElement>("#hero-canvas");
   const sky = document.querySelector<HTMLElement>(".sky");
-  const earth = document.querySelector<HTMLElement>(".earth-horizon");
-  const curtain = document.querySelector<HTMLElement>(".cloud-curtain");
-  const left = document.querySelector<HTMLElement>(".cloud-curtain__panel--left");
-  const right = document.querySelector<HTMLElement>(".cloud-curtain__panel--right");
+  const glow = document.querySelector<HTMLElement>(".atmosphere-glow");
+  const ocean = document.querySelector<HTMLElement>("#ocean-canvas");
   const work = document.querySelector<HTMLElement>("#work");
   const about = document.querySelector<HTMLElement>("#about");
-  if (!space || !sky || !earth || !curtain || !left || !right || !work || !about) return;
+  if (!space || !sky || !glow || !ocean || !work || !about) return;
 
   const mm = gsap.matchMedia();
 
@@ -27,10 +25,8 @@ export function initAtmosphere(): void {
     })
       .to(space, { opacity: 0, duration: 0.35 }, 0)
       .to(sky, { opacity: 1, duration: 0.35 }, 0)
-      .to(curtain, { opacity: 1, duration: 0.35 }, 0)
-      .to(left, { xPercent: -100, duration: 0.45 }, 0.55)
-      .to(right, { xPercent: 100, duration: 0.45 }, 0.55)
-      .to(curtain, { opacity: 0, duration: 0.1 }, 0.9);
+      .to(glow, { opacity: 1, scale: 1.3, duration: 0.4, ease: "power2.out" }, 0.15)
+      .to(glow, { opacity: 0, duration: 0.25 }, 0.55);
 
     gsap.timeline({
       scrollTrigger: {
@@ -39,7 +35,7 @@ export function initAtmosphere(): void {
         end: "+=250%",
         scrub: 1,
       },
-    }).to(earth, { opacity: 1, duration: 1 });
+    }).to(ocean, { opacity: 1, duration: 1 });
 
     return () => ScrollTrigger.getAll().forEach((st) => st.kill());
   });
