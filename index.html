@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Naufal Hendrawan — Software Engineer" />
+    <title>Naufal Hendrawan — Portfolio</title>
+  </head>
+  <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <canvas id="hero-canvas" class="hero__canvas"></canvas>
+
+    <header class="nav">
+      <a class="nav__logo" href="#top" data-cursor-hover>NH</a>
+      <nav class="nav__links">
+        <a href="#work" data-cursor-hover>Work</a>
+        <a href="#about" data-cursor-hover>About</a>
+        <a href="#contact" data-cursor-hover>Contact</a>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section id="top" class="hero">
+        <p class="hero__eyebrow">SOFTWARE ENGINEER</p>
+        <h1 class="hero__title">
+          <span>I BUILD</span>
+          <span>PRODUCTS THAT</span>
+          <span>FEEL INEVITABLE.</span>
+        </h1>
+        <p class="hero__sub">
+          Mobile &amp; web engineering, from architecture to the last pixel of motion.
+        </p>
+        <a class="hero__cta" href="#work" data-cursor-hover>SEE THE WORK</a>
+      </section>
+
+      <section id="work" class="work">
+        <h2 data-reveal>SELECTED WORK</h2>
+        <div class="work__list" data-reveal-stagger>
+          <article class="work__item" data-cursor-hover>
+            <h3>Project One</h3>
+            <p>Short outcome-focused description of the build.</p>
+          </article>
+          <article class="work__item" data-cursor-hover>
+            <h3>Project Two</h3>
+            <p>Short outcome-focused description of the build.</p>
+          </article>
+          <article class="work__item" data-cursor-hover>
+            <h3>Project Three</h3>
+            <p>Short outcome-focused description of the build.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about" data-pin>
+        <h2 data-reveal>ABOUT</h2>
+        <p data-reveal>
+          A few lines on background, focus areas, and what kind of problems get picked up.
+        </p>
+      </section>
+
+      <section id="contact" class="contact">
+        <h2 data-reveal>LET'S TALK</h2>
+        <a class="contact__email" href="mailto:hello@example.com" data-reveal data-cursor-hover>
+          hello@example.com
+        </a>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
