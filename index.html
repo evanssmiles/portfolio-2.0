@@ -53,46 +53,91 @@
       <section id="work" class="work">
         <h2 data-reveal>SELECTED WORK</h2>
         <div class="work__list" data-reveal-stagger>
-          <article class="work__item" data-cursor-hover>
+          <button
+            class="work__item"
+            type="button"
+            data-cursor-hover
+            data-work-trigger
+            data-title="ruparupa"
+            data-desc="Home & lifestyle e-commerce app — browsing to checkout across furniture, electronics, and household goods."
+            data-color="#0057D9"
+            data-image=""
+          >
             <span class="work__index">01</span>
             <div class="work__body">
               <h3>ruparupa</h3>
               <p>Home &amp; lifestyle e-commerce app — browsing to checkout across furniture, electronics, and household goods.</p>
             </div>
             <span class="work__arrow">&#8599;</span>
-          </article>
-          <article class="work__item" data-cursor-hover>
+          </button>
+          <button
+            class="work__item"
+            type="button"
+            data-cursor-hover
+            data-work-trigger
+            data-title="Informa"
+            data-desc="Furniture retail app with category browsing, loyalty points, and mix-and-match product discovery."
+            data-color="#0B2A5B"
+            data-image=""
+          >
             <span class="work__index">02</span>
             <div class="work__body">
               <h3>Informa</h3>
               <p>Furniture retail app with category browsing, loyalty points, and mix-and-match product discovery.</p>
             </div>
             <span class="work__arrow">&#8599;</span>
-          </article>
-          <article class="work__item" data-cursor-hover>
+          </button>
+          <button
+            class="work__item"
+            type="button"
+            data-cursor-hover
+            data-work-trigger
+            data-title="Maimaid"
+            data-desc="On-demand home service app with in-app wallet, top-up, and bill payment."
+            data-color="#F2994A"
+            data-image=""
+          >
             <span class="work__index">03</span>
             <div class="work__body">
               <h3>Maimaid</h3>
               <p>On-demand home service app with in-app wallet, top-up, and bill payment.</p>
             </div>
             <span class="work__arrow">&#8599;</span>
-          </article>
-          <article class="work__item" data-cursor-hover>
+          </button>
+          <button
+            class="work__item"
+            type="button"
+            data-cursor-hover
+            data-work-trigger
+            data-title="VCGamers"
+            data-desc="Game top-up and voucher marketplace for instant digital purchases."
+            data-color="#5B21B6"
+            data-image=""
+          >
             <span class="work__index">04</span>
             <div class="work__body">
               <h3>VCGamers</h3>
               <p>Game top-up and voucher marketplace for instant digital purchases.</p>
             </div>
             <span class="work__arrow">&#8599;</span>
-          </article>
-          <article class="work__item" data-cursor-hover>
+          </button>
+          <button
+            class="work__item"
+            type="button"
+            data-cursor-hover
+            data-work-trigger
+            data-title="Store Mode"
+            data-desc="In-store companion mode for ruparupa, built for the on-site shopping experience."
+            data-color="#111827"
+            data-image=""
+          >
             <span class="work__index">05</span>
             <div class="work__body">
               <h3>Store Mode</h3>
               <p>In-store companion mode for ruparupa, built for the on-site shopping experience.</p>
             </div>
             <span class="work__arrow">&#8599;</span>
-          </article>
+          </button>
         </div>
       </section>
 
@@ -135,6 +180,23 @@
         </a>
       </section>
     </main>
+
+    <div class="work-modal" id="work-modal">
+      <div class="work-modal__backdrop" data-work-close></div>
+      <div class="work-modal__panel">
+        <button class="work-modal__close" type="button" aria-label="Close" data-work-close data-cursor-hover>
+          &times;
+        </button>
+        <div class="work-modal__media">
+          <img class="work-modal__img" alt="" hidden />
+          <span class="work-modal__initial"></span>
+        </div>
+        <div class="work-modal__body">
+          <h3 class="work-modal__title"></h3>
+          <p class="work-modal__desc"></p>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer">
       <span>© 2026 Naufal Hendrawan</span>
