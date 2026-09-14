@@ -5,6 +5,7 @@ import { initHeroScene } from "./lib/heroScene";
 import { initScrollAnimations } from "./lib/scrollAnimations";
 import { initNav } from "./lib/nav";
 import { initMenu } from "./lib/menu";
+import { initPreloader } from "./lib/preloader";
 
 initSmoothScroll();
 initCursor();
@@ -14,3 +15,5 @@ initMenu();
 
 const canvas = document.querySelector<HTMLCanvasElement>("#hero-canvas");
 if (canvas) initHeroScene(canvas);
+
+initPreloader();

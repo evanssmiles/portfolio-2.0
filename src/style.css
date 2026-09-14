@@ -41,6 +41,33 @@ a {
   text-decoration: none;
 }
 
+html.no-scroll,
+html.no-scroll body {
+  overflow: hidden;
+  height: 100%;
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__count {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.preloader__count::after {
+  content: "%";
+  color: var(--muted);
+}
+
 /* custom cursor */
 .cursor-dot,
 .cursor-ring {
