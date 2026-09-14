@@ -1,16 +1,17 @@
 import gsap from "gsap";
+import type Lenis from "lenis";
 
-export function initPreloader(): void {
+export function initPreloader(lenis: Lenis): void {
   const el = document.querySelector<HTMLElement>("#preloader");
   const count = document.querySelector<HTMLElement>(".preloader__count");
   if (!el || !count) return;
 
-  document.documentElement.classList.add("no-scroll");
+  lenis.stop();
 
   const progress = { value: 0 };
   const tl = gsap.timeline({
     onComplete: () => {
-      document.documentElement.classList.remove("no-scroll");
+      lenis.start();
       el.remove();
     },
   });

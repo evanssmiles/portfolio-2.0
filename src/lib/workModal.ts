@@ -1,6 +1,7 @@
 import gsap from "gsap";
+import type Lenis from "lenis";
 
-export function initWorkModal(): void {
+export function initWorkModal(lenis: Lenis): void {
   const modal = document.querySelector<HTMLElement>("#work-modal");
   const panel = modal?.querySelector<HTMLElement>(".work-modal__panel");
   const title = modal?.querySelector<HTMLElement>(".work-modal__title");
@@ -20,7 +21,7 @@ export function initWorkModal(): void {
   const close = () => {
     if (!open) return;
     open = false;
-    document.documentElement.classList.remove("no-scroll");
+    lenis.start();
     tl.reverse();
   };
 
@@ -41,7 +42,7 @@ export function initWorkModal(): void {
     }
 
     open = true;
-    document.documentElement.classList.add("no-scroll");
+    lenis.stop();
     tl.play();
   };
 

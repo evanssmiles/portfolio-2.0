@@ -8,14 +8,14 @@ import { initMenu } from "./lib/menu";
 import { initPreloader } from "./lib/preloader";
 import { initWorkModal } from "./lib/workModal";
 
-initSmoothScroll();
+const lenis = initSmoothScroll();
 initCursor();
 initScrollAnimations();
 initNav();
 initMenu();
-initWorkModal();
+initWorkModal(lenis);
 
 const canvas = document.querySelector<HTMLCanvasElement>("#hero-canvas");
 if (canvas) initHeroScene(canvas);
 
-initPreloader();
+initPreloader(lenis);

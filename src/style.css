@@ -41,12 +41,6 @@ a {
   text-decoration: none;
 }
 
-html.no-scroll,
-html.no-scroll body {
-  overflow: hidden;
-  height: 100%;
-}
-
 #preloader {
   position: fixed;
   inset: 0;
