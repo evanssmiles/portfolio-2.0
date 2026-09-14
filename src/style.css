@@ -102,6 +102,69 @@ a {
   opacity: 0.7;
 }
 
+/* atmosphere: space -> sky -> earth */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  background: linear-gradient(to bottom, #0c1f3f 0%, #2f6fb0 45%, #bfe3fb 85%, #d9f0e4 100%);
+}
+
+.earth-horizon {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.earth-horizon svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+}
+
+.cloud-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cloud-curtain__panel {
+  position: absolute;
+  top: -5%;
+  bottom: -5%;
+  width: 52%;
+  background: #f4f6f9;
+  box-shadow: 0 0 120px 40px rgba(255, 255, 255, 0.9);
+}
+
+.cloud-curtain__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at 40% 85%, rgba(255, 255, 255, 0.9) 0%, transparent 55%);
+  filter: blur(30px);
+}
+
+.cloud-curtain__panel--left {
+  left: 0;
+  transform: translateX(0);
+}
+
+.cloud-curtain__panel--right {
+  right: 0;
+  transform: translateX(0);
+}
+
 /* nav */
 .nav {
   position: fixed;
@@ -190,7 +253,7 @@ a {
 /* main */
 main {
   position: relative;
-  z-index: 1;
+  z-index: 4;
 }
 
 section {
@@ -490,7 +553,7 @@ section {
 
 .footer {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   display: flex;
   justify-content: space-between;
   align-items: center;

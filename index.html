@@ -17,6 +17,30 @@
 
     <canvas id="hero-canvas" class="hero__canvas"></canvas>
 
+    <div class="sky" aria-hidden="true"></div>
+
+    <div class="earth-horizon" aria-hidden="true">
+      <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice">
+        <path d="M0,500 L0,260 L220,120 L420,240 L620,80 L860,220 L1060,140 L1260,240 L1440,180 L1440,500 Z" fill="#1f3a2f" />
+        <ellipse cx="420" cy="470" rx="360" ry="60" fill="#3a6f8f" opacity="0.55" />
+        <path d="M0,500 L0,340 Q120,300 240,340 Q360,300 480,340 Q600,300 720,340 L720,500 Z" fill="#2b5a3e" />
+        <path d="M760,500 L760,320 Q880,270 1000,320 Q1120,280 1240,320 Q1340,290 1440,320 L1440,500 Z" fill="#245038" />
+        <g fill="#173425">
+          <circle cx="180" cy="330" r="42" />
+          <circle cx="260" cy="345" r="55" />
+          <circle cx="340" cy="325" r="38" />
+          <circle cx="980" cy="310" r="48" />
+          <circle cx="1080" cy="325" r="40" />
+          <circle cx="1200" cy="305" r="52" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="cloud-curtain" aria-hidden="true">
+      <div class="cloud-curtain__panel cloud-curtain__panel--left"></div>
+      <div class="cloud-curtain__panel cloud-curtain__panel--right"></div>
+    </div>
+
     <header class="nav">
       <a class="nav__logo" href="#top" data-cursor-hover>NH</a>
       <nav class="nav__links">
