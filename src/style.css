@@ -317,8 +317,6 @@ section {
 
 .work__list {
   display: grid;
-  gap: 1px;
-  background: #222;
 }
 
 .work__item {
@@ -330,10 +328,15 @@ section {
   transition: padding-left 0.35s ease;
   width: 100%;
   border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   font: inherit;
   color: inherit;
   text-align: left;
   cursor: pointer;
+}
+
+.work__item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .work__item:hover {
