@@ -1,16 +1,18 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { initCloudScene } from "./cloudScene";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function initAtmosphere(): void {
   const space = document.querySelector<HTMLElement>("#hero-canvas");
   const sky = document.querySelector<HTMLElement>(".sky");
-  const glow = document.querySelector<HTMLElement>(".atmosphere-glow");
   const ocean = document.querySelector<HTMLElement>("#ocean-canvas");
+  const cloudCanvas = document.querySelector<HTMLCanvasElement>("#cloud-canvas");
   const work = document.querySelector<HTMLElement>("#work");
-  const about = document.querySelector<HTMLElement>("#about");
-  if (!space || !sky || !glow || !ocean || !work || !about) return;
+  if (!space || !sky || !ocean || !cloudCanvas || !work) return;
+
+  const cloud = initCloudScene(cloudCanvas);
 
   const mm = gsap.matchMedia();
 
@@ -19,24 +21,33 @@ export function initAtmosphere(): void {
       scrollTrigger: {
         trigger: work,
         start: "top bottom",
-        end: "bottom top",
+        end: "top 20%",
         scrub: 1,
       },
     })
-      .to(space, { opacity: 0, duration: 0.35 }, 0)
-      .to(sky, { opacity: 1, duration: 0.35 }, 0)
-      .to(glow, { opacity: 1, scale: 1.3, duration: 0.4, ease: "power2.out" }, 0.15)
-      .to(glow, { opacity: 0, duration: 0.25 }, 0.55);
+      .to(space, { opacity: 0, duration: 1 }, 0)
+      .to(sky, { opacity: 1, duration: 1 }, 0)
+      .to(ocean, { opacity: 1, duration: 1 }, 0)
+      .to(cloudCanvas, { opacity: 1, duration: 1 }, 0);
 
+    const holeState = { value: 0 };
     gsap.timeline({
       scrollTrigger: {
-        trigger: about,
-        start: "top top",
-        end: "+=250%",
+        trigger: work,
+        start: "top bottom",
+        end: "bottom top",
         scrub: 1,
       },
-    }).to(ocean, { opacity: 1, duration: 1 });
+    }).to(holeState, {
+      value: 1.3,
+      duration: 1,
+      ease: "power1.in",
+      onUpdate: () => cloud.setHole(holeState.value),
+    });
 
-    return () => ScrollTrigger.getAll().forEach((st) => st.kill());
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      cloud.destroy();
+    };
   });
 }

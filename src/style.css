@@ -102,7 +102,7 @@ a {
   opacity: 0.7;
 }
 
-/* atmosphere: space -> atmosphere entry -> sky -> ocean */
+/* atmosphere: space -> sky -> ocean through parting clouds */
 .sky {
   position: fixed;
   inset: 0;
@@ -111,33 +111,18 @@ a {
   background: linear-gradient(to bottom, #08122c 0%, #1c4fa0 40%, #6fb4e8 75%, #dff1fb 100%);
 }
 
-.atmosphere-glow {
-  position: fixed;
-  left: 50%;
-  bottom: -70%;
-  width: 220vmax;
-  height: 220vmax;
-  margin-left: -110vmax;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 50% 32%,
-    #f2f8ff 0%,
-    #a9d3f7 18%,
-    #3f7fd6 40%,
-    #14306e 62%,
-    #050a1e 82%,
-    transparent 100%
-  );
-  z-index: 2;
-  opacity: 0;
-  transform: scale(0.4);
-  pointer-events: none;
-}
-
 .ocean-canvas {
   position: fixed;
   inset: 0;
   z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cloud-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
   opacity: 0;
   pointer-events: none;
 }

@@ -11,6 +11,7 @@ const vertexShader = /* glsl */ `
 const fragmentShader = /* glsl */ `
   precision highp float;
   uniform float uTime;
+  uniform float uHole;
   uniform vec2 uResolution;
   varying vec2 vUv;
 
@@ -34,7 +35,7 @@ const fragmentShader = /* glsl */ `
     float amp = 0.5;
     for (int i = 0; i < 5; i++) {
       v += amp * noise(p);
-      p *= 2.02;
+      p *= 2.05;
       amp *= 0.5;
     }
     return v;
@@ -43,26 +44,26 @@ const fragmentShader = /* glsl */ `
   void main() {
     vec2 uv = vUv;
     float aspect = uResolution.x / uResolution.y;
-    vec2 p = vec2(uv.x * aspect, uv.y) * 6.0 + vec2(uTime * 0.045, uTime * 0.025);
+    vec2 centered = (uv - 0.5) * vec2(aspect, 1.0);
 
+    vec2 p = uv * vec2(aspect, 1.0) * 3.0 + vec2(uTime * 0.015, uTime * 0.008);
     float n = fbm(p);
-    float n2 = fbm(p * 2.6 + vec2(11.3, 7.1) + uTime * 0.02);
 
-    vec3 deep = vec3(0.015, 0.075, 0.22);
-    vec3 mid = vec3(0.03, 0.16, 0.42);
-    vec3 color = mix(deep, mid, smoothstep(0.25, 0.8, n));
+    float dist = length(centered);
+    float edge = dist + (n - 0.5) * 0.6;
+    float cloudAlpha = smoothstep(uHole - 0.12, uHole + 0.12, edge);
+    cloudAlpha *= 0.85 + n * 0.15;
 
-    float sparkle = smoothstep(0.78, 0.97, n2);
-    color += vec3(0.85, 0.93, 1.0) * sparkle * 0.9;
+    vec3 color = mix(vec3(0.78, 0.82, 0.88), vec3(1.0, 1.0, 1.0), n);
 
-    float vignette = smoothstep(1.1, 0.3, length(uv - 0.5));
-    color *= mix(0.75, 1.0, vignette);
-
-    gl_FragColor = vec4(color, 1.0);
+    gl_FragColor = vec4(color, clamp(cloudAlpha, 0.0, 1.0));
   }
 `;
 
-export function initOceanScene(canvas: HTMLCanvasElement): () => void {
+export function initCloudScene(canvas: HTMLCanvasElement): {
+  setHole: (value: number) => void;
+  destroy: () => void;
+} {
   const scene = new THREE.Scene();
   const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
@@ -73,8 +74,10 @@ export function initOceanScene(canvas: HTMLCanvasElement): () => void {
   const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
+    transparent: true,
     uniforms: {
       uTime: { value: 0 },
+      uHole: { value: 0 },
       uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
     },
   });
@@ -98,11 +101,16 @@ export function initOceanScene(canvas: HTMLCanvasElement): () => void {
   };
   tick();
 
-  return () => {
-    cancelAnimationFrame(frameId);
-    window.removeEventListener("resize", onResize);
-    quad.geometry.dispose();
-    material.dispose();
-    renderer.dispose();
+  return {
+    setHole: (value: number) => {
+      material.uniforms.uHole.value = value;
+    },
+    destroy: () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", onResize);
+      quad.geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+    },
   };
 }
