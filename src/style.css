@@ -93,6 +93,15 @@ a {
   align-items: center;
   padding: 24px 5vw;
   mix-blend-mode: difference;
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.nav--scrolled {
+  backdrop-filter: blur(8px);
+}
+
+.nav--hidden {
+  transform: translateY(-100%);
 }
 
 .nav__logo {
@@ -175,7 +184,25 @@ section {
 
 .work__item {
   background: var(--bg);
-  padding: 48px 0;
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  transition: padding-left 0.35s ease;
+}
+
+.work__item:hover {
+  padding-left: 16px;
+}
+
+.work__index {
+  color: var(--muted);
+  font-size: 0.9rem;
+  width: 2ch;
+}
+
+.work__body {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -189,6 +216,18 @@ section {
 .work__item p {
   margin: 0;
   color: var(--muted);
+}
+
+.work__arrow {
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translate(-8px, 8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.work__item:hover .work__arrow {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .about p {
@@ -205,4 +244,21 @@ section {
   font-size: clamp(1.75rem, 5vw, 3.5rem);
   border-bottom: 1px solid var(--fg);
   padding-bottom: 8px;
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 5vw 48px;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 24px;
 }
