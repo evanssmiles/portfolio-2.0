@@ -43,6 +43,25 @@ export function initScrollAnimations(): void {
       });
     });
 
+    document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+      const target = Number(el.dataset.count);
+      const suffix = el.dataset.countSuffix ?? "";
+      const counter = { value: 0 };
+      gsap.to(counter, {
+        value: target,
+        duration: 1.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          once: true,
+        },
+        onUpdate: () => {
+          el.textContent = Math.round(counter.value) + suffix;
+        },
+      });
+    });
+
     document.querySelectorAll<HTMLElement>("[data-pin]").forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
